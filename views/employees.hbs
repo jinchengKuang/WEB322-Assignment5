@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            Employees
+            <a href="/employees/add" class="btn btn-success pull-right">Add New Employee</a>
+        </h2>
+        <hr />
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Employee Num</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Manager ID</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Department </th>
+                        <th scope="col">Hired On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each employees}}
+                        <tr> 
+                            <td>
+                                {{this.dataValues.employeeNum}}
+                            </td>
+                            <td>
+                                <a href="/employee/{{this.dataValues.employeeNum}}">
+                                    {{this.dataValues.firstName}} {{this.dataValues.lastName}} 
+                                </a>
+                            </td>
+                            <td>
+                                <a href="mailto:{{this.dataValues.email}}">
+                                    {{this.dataValues.email}}
+                                </a>
+                            </td>
+                            <td>
+                                {{this.dataValues.addressStreet}} {{this.dataValues.addressCity}} {{this.dataValues.addressState}} {{this.dataValues.addressPostal}}                                
+                            </td>
+                            <td>
+                                <a href="/employees?manager={{this.dataValues.employeeManagerNum}}">
+                                    {{this.dataValues.employeeManagerNum}}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/employees?status={{this.dataValues.status}}">
+                                    {{this.dataValues.status}}                                
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/employees?department={{this.dataValues.department}}">
+                                    {{this.dataValues.department}}
+                                </a>
+                            </td>
+                            <td>
+                                {{this.dataValues.hireDate}}
+                            </td>
+                            <td>
+                                <a href="/employees/delete/{{this.dataValues.employeeNum}}" class="btn btn-danger">
+                                    Remove
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        {{#unless employees}}
+            <div class="col-md-12 text-center">
+                <strong>{{message}}</strong>
+            </div>
+        {{/unless}}
+    </div>
+</div>

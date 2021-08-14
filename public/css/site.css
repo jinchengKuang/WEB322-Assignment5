@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Titillium+Web:wght@300;400&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to right, rgba(122, 136, 255, 0.3), rgba(122, 255, 175, 0.3));
+}
+
+.navbar {
+    background-color: rgba(204, 204, 153, 0.8);
+}
+
+.nav :hover {
+    background-color: #dbdbaa;
+    transition: all, 0.3s;
+}
+
+.images:hover {
+    transform: scale(1.1, 1.1);
+    transition: all, 0.3s;
+}
