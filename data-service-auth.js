@@ -45,10 +45,12 @@ module.exports.registerUser = function (userData) {
 				userData.password = hash;
 				let newUser = new User(userData);
 				newUser.save((err) => {
-					if (err === 11000) {
-						reject("User Name already taken");
-					} else if (err) {
-						reject("There was an error creating the user: " + err);
+					if (err) {
+						if (err.code === 11000) {
+							reject("User Name already taken");
+						} else {
+							reject("There was an error creating the user: " + err);
+						}
 					}
 					resolve();
 				});
